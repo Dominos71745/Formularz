@@ -1,0 +1,23 @@
+﻿@model Formularz.Models.Dane
+@{
+    ViewData["Title"] = "Form";
+}
+
+@using (Html.BeginForm("Form", "Dane", FormMethod.Post, new { id = "registrationForm" }))
+{
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+    <p>Twoje Imie: @Html.TextBoxFor(a => a.Imie)</p>
+    <p>Twoje Nazwisko: @Html.TextBoxFor(a => a.Nazwisko)</p>
+    <p>Twoj email: @Html.TextBoxFor(a => a.Email)</p>
+    <p>Hasło: @Html.PasswordFor(a => a.Haslo)</p>
+    <p>Potwierdzenie hasła: @Html.PasswordFor(a => a.PotwierdzenieHasla)</p>
+    <p>Nr telefonu : @Html.TextBoxFor(a => a.NumerTelefonu)</p>
+    <p>Wiek : @Html.TextBoxFor(a => a.Wiek)</p>
+    <p>Miasto : @Html.DropDownListFor(a => a.Miasto, Html.GetEnumSelectList<MiastoEnum>())</p>
+    <input type="submit" onclick="return validateForm();" />
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+}
+
+<script src="~/js/site.js"></script>
