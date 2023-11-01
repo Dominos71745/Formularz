@@ -10,6 +10,20 @@
 
     var isValid = true;
 
+    if (name.length < 2) {
+        document.getElementById("nameError").innerText = "Imię musi zawierać minimum 2 znaki";
+        isValid = false;
+    } else {
+        document.getElementById("nameError").innerText = "";
+    }
+
+    if (surname.length < 2) {
+        document.getElementById("surnameError").innerText = "Nazwisko musi zawierać minimum 2 znaki";
+        isValid = false;
+    } else {
+        document.getElementById("surnameError").innerText = "";
+    }
+
     var emailRegex = /.+@.+\..+/;
     if (!emailRegex.test(email)) {
         document.getElementById("emailError").innerText = "Podaj poprawny adres email";
@@ -33,24 +47,7 @@
         document.getElementById("confirmPasswordError").innerText = "";
     }
 
-    // Walidacja Imienia
-    if (name.length < 2) {
-        document.getElementById("nameError").innerText = "Imię musi zawierać minimum 2 znaki";
-        isValid = false;
-    } else {
-        document.getElementById("nameError").innerText = "";
-    }
-
-    // Walidacja Nazwiska
-    if (surname.length < 2) {
-        document.getElementById("surnameError").innerText = "Nazwisko musi zawierać minimum 2 znaki";
-        isValid = false;
-    } else {
-        document.getElementById("surnameError").innerText = "";
-    }
-
-    // Walidacja Numeru Telefonu
-    var phoneRegex = /^[0-9]{9}$/; // Polski numer telefonu składający się z 9 cyfr
+    var phoneRegex = /^[0-9]{9}$/; 
     if (!phoneRegex.test(phone)) {
         document.getElementById("phoneError").innerText = "Podaj poprawny numer telefonu (9 cyfr)";
         isValid = false;
@@ -58,7 +55,6 @@
         document.getElementById("phoneError").innerText = "";
     }
 
-    // Walidacja Wieku
     var ageInt = parseInt(age);
     if (isNaN(ageInt) || ageInt < 10 || ageInt > 80) {
         document.getElementById("ageError").innerText = "Wiek musi być liczbą między 10 a 80";
